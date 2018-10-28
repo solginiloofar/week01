@@ -1,0 +1,128 @@
+
+# coding: utf-8
+
+# In[1]:
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as pet
+import matplotlib.pyplot as plt
+dtype_dict = {'bathrooms':float, 'waterfront':int, 'sqft_above':int, 'sqft_living15':float, 'grade':int, 'yr_renovated':int, 'price':float, 'bedrooms':float, 'zipcode':str, 'long':float, 'sqft_lot15':float, 'sqft_living':float, 'floors':str, 'condition':int, 'lat':float, 'date':str, 'sqft_basement':int, 'yr_built':int, 'id':str, 'sqft_lot':int, 'view':int}
+train_data=pd.read_csv('C:\Python\kc_house_train_data.csv')
+test_data=pd.read_csv('C:\Python\kc_house_test_data.csv')
+df=pd.read_csv('C:\Python\kc_house_train_data.csv')
+xs=train_data['sqft_living']
+ys=train_data['price']
+len(xs), len(ys)
+
+
+# In[2]:
+
+def slope_intercept(sqft_living, price):
+    x=np.array(sqft_living)
+    y=np.array(price)
+    m=( ((np.mean(x)*np.mean(y)) - np.mean(x*y)) / 
+       ((np.mean(x)*np.mean(x)) - np.mean(x*x)) )
+    m=round(m,2)
+    b=(np.mean(y) - np.mean(x)*m)
+    b=round(b,2)
+    return m,bdef slope_intercept(sqft_living, price):
+    x=np.array(sqft_living)
+    y=np.array(price)
+    m=( ((np.mean(x)*np.mean(y)) - np.mean(x*y)) / 
+       ((np.mean(x)*np.mean(x)) - np.mean(x*x)) )
+    m=round(m,2)
+    b=(np.mean(y) - np.mean(x)*m)
+    b=round(b,2)
+    return m,b
+    
+
+slope_intercept(xs,ys)
+
+    
+
+slope_intercept(xs,ys)
+
+
+# In[3]:
+
+m,b=slope_intercept(xs,ys)
+
+
+# In[4]:
+
+def get_regression_predictions(sqft_living, intercept, slope):
+    return intercept+slope*sqft_living
+
+
+# In[5]:
+
+predicted_price=get_regression_predictions(4910, xs, ys)
+predicted_price
+
+
+# In[6]:
+
+predicted_price=get_regression_predictions(4910, m, b)
+predicted_price
+
+
+# In[7]:
+
+predicted_price=get_regression_predictions(4910, b, m)
+predicted_price
+
+
+# In[8]:
+
+def get_residual_sum_of_squares(sqft_living, output, b, m):
+    y_hat=b+sqft_living*m
+    return ( (output-y_hat)**2).sum()
+
+
+# In[9]:
+
+def get_residual_sum_of_squares(4910, 1337305.1099999999, b, m):
+    y_hat=b+sqft_living*m
+    return ( (output-y_hat)**2).sum()
+
+
+# In[10]:
+
+def get_residual_sum_of_squares(4910, 1337305.1099999999, b, m):
+    y_hat=b+sqft_living*m
+    return ( (output-y_hat)**2).sum()
+
+
+# In[11]:
+
+def get_residual_sum_of_squares(4910, 1337305.1099999999, b, m):
+    y_hat=b+sqft_living*m
+    return ((1337305.1099999999 -y_hat)**2).sum()
+
+
+# In[1]:
+
+def get_residual_sum_of_squares(4910, 1337305.1099999999, b, m):
+    y_hat=b+sqft_living*m
+    return ((1337305.1099999999 - y_hat)**2).sum() 
+
+
+# In[2]:
+
+def get_residual_sum_of_squares(sqft_living, output, b, m):
+    y_hat=b+sqft_living*m
+    return ((output -y_hat)**2).sum()
+
+
+# In[3]:
+
+sqft_living=4910
+m,b=slope_intercept(xs,ys)
+output=predicted_price
+
+
+# In[ ]:
+
+
+
